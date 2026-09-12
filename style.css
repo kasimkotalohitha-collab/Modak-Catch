@@ -1,3 +1,23 @@
+/* =========================================================
+   MODAK CATCH
+   Premium Festival Game UI
+   ========================================================= */
+
+:root {
+    --cream: #fff8f0;
+    --cream-deep: #f8e9dc;
+    --pink: #d66f91;
+    --pink-dark: #9d4f70;
+    --pink-soft: #f3d7df;
+    --lavender: #e8d9ed;
+    --purple: #72516f;
+    --brown: #624552;
+    --muted: #967985;
+    --gold: #c79642;
+    --gold-light: #f5dfad;
+    --white: #ffffff;
+}
+
 * {
     box-sizing: border-box;
     margin: 0;
@@ -9,78 +29,105 @@ body {
     width: 100%;
     height: 100%;
     overflow: hidden;
-    font-family: Arial, sans-serif;
-    background: #f8eee9;
 }
 
 body {
     display: flex;
     justify-content: center;
+    background: #eadbd8;
+    font-family:
+        Inter,
+        ui-sans-serif,
+        -apple-system,
+        BlinkMacSystemFont,
+        "Segoe UI",
+        Arial,
+        sans-serif;
+    color: var(--brown);
 }
 
-
-/* ================================
-   MAIN GAME CONTAINER
-================================ */
+/* =========================================================
+   GAME CONTAINER
+   ========================================================= */
 
 #game-container {
     position: relative;
-
     width: 100%;
     max-width: 500px;
     height: 100vh;
-
+    height: 100dvh;
     overflow: hidden;
 
     background:
         radial-gradient(
-            circle at 50% 15%,
-            rgba(255, 255, 255, 0.8),
-            transparent 30%
+            circle at 50% -5%,
+            rgba(255, 255, 255, 0.95) 0,
+            rgba(255, 255, 255, 0.55) 18%,
+            transparent 42%
         ),
         linear-gradient(
             180deg,
-            #fff5ed 0%,
-            #ffe9df 52%,
-            #f6dfee 100%
+            #fff9f2 0%,
+            #ffefe5 48%,
+            #f1ddec 100%
         );
+
+    box-shadow:
+        0 0 70px rgba(77, 46, 60, 0.12);
 }
 
+/* subtle festival texture */
+#game-container::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    z-index: 0;
+    pointer-events: none;
 
-/* ================================
+    background:
+        radial-gradient(
+            circle at 12% 18%,
+            rgba(214, 111, 145, 0.07) 0 2px,
+            transparent 3px
+        ),
+        radial-gradient(
+            circle at 88% 32%,
+            rgba(114, 81, 111, 0.06) 0 2px,
+            transparent 3px
+        );
+
+    background-size: 75px 75px, 95px 95px;
+}
+
+/* =========================================================
    CANVAS
-================================ */
+   ========================================================= */
 
 #gameCanvas {
     position: absolute;
-
     inset: 0;
 
     width: 100%;
     height: 100%;
 
     display: block;
-
     z-index: 1;
 
     touch-action: none;
-
-    transition: opacity 0.15s ease;
+    -webkit-tap-highlight-color: transparent;
 }
 
-
-/* ================================
-   HEADER
-================================ */
+/* =========================================================
+   HEADER / HUD
+   ========================================================= */
 
 .game-header {
     position: absolute;
-
     top: 0;
     left: 0;
 
     width: 100%;
-    height: 76px;
+    height: 72px;
 
     display: flex;
     align-items: center;
@@ -90,11 +137,12 @@ body {
 
     z-index: 10;
 
-    background: rgba(255, 255, 255, 0.76);
+    background: rgba(255, 250, 246, 0.82);
 
-    backdrop-filter: blur(14px);
+    border-bottom: 1px solid rgba(98, 69, 82, 0.08);
 
-    border-bottom: 1px solid rgba(155, 88, 117, 0.08);
+    box-shadow:
+        0 8px 25px rgba(91, 58, 72, 0.055);
 }
 
 .stat {
@@ -109,144 +157,214 @@ body {
 
 .label {
     font-size: 9px;
+    line-height: 1;
 
     font-weight: 800;
+    letter-spacing: 1.8px;
+    text-transform: uppercase;
 
-    letter-spacing: 1.7px;
-
-    color: #a17e8d;
+    color: #a48690;
 }
 
 #score {
-    font-size: 23px;
+    font-size: 24px;
+    line-height: 1;
 
     font-weight: 900;
+    letter-spacing: -0.5px;
 
-    color: #684958;
+    color: var(--brown);
 }
 
 #lives {
-    font-size: 15px;
+    min-height: 20px;
+
+    font-size: 14px;
+    line-height: 1;
 
     letter-spacing: 2px;
-
-    min-height: 20px;
 }
 
 .game-title {
-    font-size: 13px;
-
+    font-size: 11px;
     font-weight: 900;
+    letter-spacing: 3px;
+    text-transform: uppercase;
 
-    letter-spacing: 2.5px;
-
-    color: #a35678;
+    color: var(--pink-dark);
 }
 
-
-/* ================================
-   GENERIC SCREENS
-================================ */
+/* =========================================================
+   SCREENS
+   ========================================================= */
 
 .screen {
     position: absolute;
-
     inset: 0;
 
     z-index: 20;
 
     display: flex;
-
     flex-direction: column;
-
     align-items: center;
-
     justify-content: center;
 
-    padding: 32px;
+    padding: 30px 24px;
 
     text-align: center;
 
     background:
         radial-gradient(
-            circle at 50% 20%,
-            rgba(255, 255, 255, 0.9),
-            transparent 35%
+            circle at 50% 12%,
+            rgba(255, 255, 255, 0.96),
+            transparent 34%
         ),
         linear-gradient(
             180deg,
-            rgba(255, 246, 239, 0.98),
-            rgba(249, 224, 237, 0.98)
+            rgba(255, 249, 243, 0.985),
+            rgba(249, 227, 238, 0.985)
         );
 
-    animation: screenIn 0.35s ease;
+    animation: screenEnter 0.35s ease both;
 }
 
 .hidden {
     display: none !important;
 }
 
+/* =========================================================
+   FESTIVAL DECORATION
+   ========================================================= */
 
-/* ================================
+#start-screen::before {
+    content: "";
+
+    position: absolute;
+
+    width: 260px;
+    height: 260px;
+
+    top: 9%;
+
+    border-radius: 50%;
+
+    border: 1px solid rgba(157, 79, 112, 0.09);
+
+    box-shadow:
+        0 0 0 18px rgba(157, 79, 112, 0.025),
+        0 0 0 38px rgba(157, 79, 112, 0.018);
+
+    pointer-events: none;
+}
+
+#start-screen::after {
+    content: "✦";
+
+    position: absolute;
+
+    right: 12%;
+    top: 19%;
+
+    font-size: 18px;
+
+    color: rgba(199, 150, 66, 0.55);
+
+    animation: sparkle 3s ease-in-out infinite;
+
+    pointer-events: none;
+}
+
+/* =========================================================
    START SCREEN
-================================ */
+   ========================================================= */
 
 .start-decoration {
-    font-size: 42px;
+    position: relative;
+    z-index: 2;
+
+    width: 76px;
+    height: 76px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
 
     margin-bottom: 18px;
 
-    filter: drop-shadow(
-        0 8px 15px rgba(175, 102, 126, 0.18)
-    );
+    border-radius: 24px;
 
-    animation: float 3s ease-in-out infinite;
+    background:
+        linear-gradient(
+            145deg,
+            #fffdf9,
+            #f8e3e8
+        );
+
+    border: 1px solid rgba(157, 79, 112, 0.12);
+
+    box-shadow:
+        0 18px 38px rgba(119, 67, 89, 0.12),
+        inset 0 1px 0 rgba(255, 255, 255, 1);
+
+    font-size: 40px;
+
+    animation: gentleFloat 3.5s ease-in-out infinite;
 }
 
 .eyebrow {
-    font-size: 10px;
+    position: relative;
+    z-index: 2;
 
-    font-weight: 800;
+    margin-bottom: 11px;
 
-    letter-spacing: 2.2px;
+    font-size: 9px;
+    font-weight: 900;
+    letter-spacing: 2.8px;
+    text-transform: uppercase;
 
-    color: #a57989;
-
-    margin-bottom: 12px;
+    color: var(--gold);
 }
 
 h1 {
-    font-size: clamp(48px, 14vw, 70px);
+    position: relative;
+    z-index: 2;
 
-    line-height: 0.88;
+    margin-bottom: 17px;
 
-    letter-spacing: -2px;
+    font-size: clamp(48px, 14vw, 68px);
+    line-height: 0.86;
 
-    color: #70495b;
+    font-weight: 950;
+    letter-spacing: -3px;
 
-    margin-bottom: 20px;
+    color: var(--brown);
 
     text-shadow:
-        0 5px 0 rgba(255, 255, 255, 0.7);
+        0 3px 0 rgba(255, 255, 255, 0.95),
+        0 12px 30px rgba(98, 69, 82, 0.10);
 }
 
 .tagline {
-    font-size: 16px;
+    position: relative;
+    z-index: 2;
 
-    line-height: 1.6;
+    max-width: 310px;
 
-    color: #886875;
+    margin-bottom: 30px;
 
-    margin-bottom: 34px;
+    font-size: 14px;
+    line-height: 1.65;
+
+    color: var(--muted);
 }
 
-
-/* ================================
-   BUTTONS
-================================ */
+/* =========================================================
+   BUTTON SYSTEM
+   ========================================================= */
 
 button {
     border: none;
+    outline: none;
 
     font-family: inherit;
 
@@ -256,136 +374,173 @@ button {
 }
 
 .primary-button {
-    width: min(280px, 100%);
+    position: relative;
+    z-index: 2;
 
+    width: min(285px, 100%);
     height: 56px;
 
-    border-radius: 18px;
+    overflow: hidden;
 
-    background: linear-gradient(
-        135deg,
-        #a9577b,
-        #c26c91
-    );
+    border-radius: 17px;
+
+    background:
+        linear-gradient(
+            135deg,
+            #9f4e70 0%,
+            #c9698e 100%
+        );
 
     color: white;
 
-    font-size: 13px;
-
+    font-size: 12px;
     font-weight: 900;
-
-    letter-spacing: 1.5px;
+    letter-spacing: 1.7px;
+    text-transform: uppercase;
 
     box-shadow:
-        0 12px 25px rgba(165, 87, 123, 0.25);
+        0 13px 28px rgba(157, 79, 112, 0.25),
+        inset 0 1px 0 rgba(255, 255, 255, 0.25);
 
     transition:
-        transform 0.15s ease,
-        box-shadow 0.15s ease;
+        transform 0.16s ease,
+        box-shadow 0.16s ease;
+}
+
+.primary-button::before {
+    content: "";
+
+    position: absolute;
+
+    top: 0;
+    left: -100%;
+
+    width: 70%;
+    height: 100%;
+
+    background: rgba(255, 255, 255, 0.13);
+
+    transform: skewX(-20deg);
+
+    transition: left 0.55s ease;
+}
+
+.primary-button:hover::before {
+    left: 140%;
+}
+
+.primary-button:hover {
+    transform: translateY(-2px);
+
+    box-shadow:
+        0 17px 34px rgba(157, 79, 112, 0.29),
+        inset 0 1px 0 rgba(255, 255, 255, 0.25);
 }
 
 .primary-button:active {
-    transform: scale(0.96);
-
-    box-shadow:
-        0 6px 14px rgba(165, 87, 123, 0.2);
+    transform: translateY(1px) scale(0.97);
 }
 
 .secondary-button {
-    margin-top: 13px;
+    position: relative;
+    z-index: 2;
 
-    width: min(280px, 100%);
-
+    width: min(285px, 100%);
     height: 50px;
+
+    margin-top: 11px;
 
     border-radius: 16px;
 
     background: rgba(255, 255, 255, 0.72);
 
-    color: #92576f;
+    color: #8e5d70;
 
-    border: 1px solid rgba(165, 87, 123, 0.14);
+    border: 1px solid rgba(157, 79, 112, 0.12);
 
-    font-size: 12px;
-
-    font-weight: 800;
-
+    font-size: 11px;
+    font-weight: 850;
     letter-spacing: 1.2px;
+    text-transform: uppercase;
+
+    box-shadow:
+        0 7px 20px rgba(91, 58, 72, 0.045),
+        inset 0 1px 0 rgba(255, 255, 255, 0.9);
 
     transition:
-        background 0.15s ease,
-        transform 0.15s ease;
+        transform 0.15s ease,
+        background 0.15s ease;
+}
+
+.secondary-button:hover {
+    transform: translateY(-2px);
+    background: rgba(255, 255, 255, 0.95);
 }
 
 .secondary-button:active {
     transform: scale(0.97);
-
-    background: white;
 }
 
-
-/* ================================
-   TEXT BUTTON
-================================ */
-
 .text-button {
-    margin-top: 15px;
+    position: relative;
+    z-index: 2;
+
+    margin-top: 13px;
+
+    padding: 8px 12px;
 
     background: transparent;
 
-    color: #9a7181;
+    color: #9b7886;
 
-    font-size: 11px;
-
+    font-size: 10px;
     font-weight: 800;
-
-    letter-spacing: 1px;
-
-    padding: 8px 12px;
+    letter-spacing: 1.1px;
+    text-transform: uppercase;
 }
 
-.text-button:active {
-    transform: scale(0.96);
+.text-button:hover {
+    color: var(--pink-dark);
 }
 
-
-/* ================================
+/* =========================================================
    NAME SCREEN
-================================ */
+   ========================================================= */
 
 .name-description {
-    max-width: 280px;
+    position: relative;
+    z-index: 2;
 
-    color: #92727f;
+    max-width: 290px;
+
+    margin-top: -5px;
+    margin-bottom: 20px;
+
+    color: var(--muted);
 
     font-size: 13px;
-
-    line-height: 1.5;
-
-    margin-top: -8px;
-
-    margin-bottom: 22px;
+    line-height: 1.55;
 }
 
 .name-input {
-    width: min(280px, 100%);
+    position: relative;
+    z-index: 2;
 
-    height: 56px;
+    width: min(285px, 100%);
+    height: 55px;
 
     padding: 0 18px;
 
-    border-radius: 18px;
+    border-radius: 17px;
 
-    border: 1px solid rgba(165, 87, 123, 0.16);
+    border: 1px solid rgba(157, 79, 112, 0.14);
 
-    background: rgba(255, 255, 255, 0.85);
+    background: rgba(255, 255, 255, 0.86);
 
-    color: #70495b;
+    color: var(--brown);
 
     font-family: inherit;
-
     font-size: 15px;
-
     font-weight: 700;
 
     text-align: center;
@@ -393,7 +548,8 @@ button {
     outline: none;
 
     box-shadow:
-        0 10px 25px rgba(120, 70, 90, 0.06);
+        0 10px 25px rgba(91, 58, 72, 0.06),
+        inset 0 1px 0 rgba(255, 255, 255, 1);
 
     transition:
         border-color 0.15s ease,
@@ -401,207 +557,272 @@ button {
 }
 
 .name-input::placeholder {
-    color: #b69ca7;
-
+    color: #b49da6;
     font-weight: 500;
 }
 
 .name-input:focus {
-    border-color: rgba(169, 87, 123, 0.45);
+    border-color: rgba(157, 79, 112, 0.45);
 
     box-shadow:
-        0 10px 25px rgba(169, 87, 123, 0.12);
+        0 0 0 4px rgba(157, 79, 112, 0.07),
+        0 12px 28px rgba(157, 79, 112, 0.10);
 }
 
 .name-input + .primary-button {
-    margin-top: 16px;
+    margin-top: 14px;
 }
 
 .status-message {
     min-height: 18px;
 
-    margin-top: 12px;
+    margin-top: 10px;
 
-    color: #a9577b;
+    color: var(--pink-dark);
 
     font-size: 11px;
-
     font-weight: 700;
 }
 
-
-/* ================================
+/* =========================================================
    CURRENT PLAYER
-================================ */
+   ========================================================= */
 
 .current-player {
-    color: #a9577b;
+    position: relative;
+    z-index: 2;
 
-    font-size: 12px;
+    margin-bottom: 7px;
 
-    font-weight: 800;
+    color: var(--pink-dark);
 
-    margin-bottom: 8px;
+    font-size: 11px;
+    font-weight: 850;
 
-    letter-spacing: 0.3px;
+    letter-spacing: 0.5px;
 }
 
-
-/* ================================
+/* =========================================================
    HOW TO PLAY
-================================ */
+   ========================================================= */
 
 .back-button {
     position: absolute;
 
-    top: 24px;
-    left: 22px;
+    top: 21px;
+    left: 19px;
 
-    background: transparent;
+    padding: 9px 12px;
 
-    color: #8d6172;
+    border-radius: 12px;
 
-    font-size: 14px;
+    background: rgba(255, 255, 255, 0.64);
 
-    font-weight: 700;
+    border: 1px solid rgba(157, 79, 112, 0.08);
+
+    color: #886271;
+
+    font-size: 12px;
+    font-weight: 800;
+
+    transition:
+        transform 0.15s ease,
+        background 0.15s ease;
+}
+
+.back-button:hover {
+    transform: translateX(-2px);
+    background: rgba(255, 255, 255, 0.95);
 }
 
 .how-content {
+    position: relative;
+    z-index: 2;
+
     width: 100%;
+    max-width: 410px;
 
-    max-width: 420px;
-
-    margin-top: 25px;
+    margin-top: 22px;
 }
 
 h2 {
-    font-size: 36px;
+    margin-bottom: 22px;
 
-    letter-spacing: -1px;
+    font-size: 34px;
+    line-height: 1;
 
-    color: #70495b;
+    font-weight: 900;
+    letter-spacing: -1.5px;
 
-    margin-bottom: 25px;
+    color: var(--brown);
 }
 
 .instruction-card {
     width: 100%;
 
     display: flex;
-
     align-items: center;
+
+    gap: 14px;
+
+    padding: 14px;
+
+    margin-bottom: 9px;
 
     text-align: left;
 
-    gap: 15px;
+    border-radius: 17px;
 
-    padding: 15px;
+    background: rgba(255, 255, 255, 0.70);
 
-    margin-bottom: 10px;
-
-    border-radius: 18px;
-
-    background: rgba(255, 255, 255, 0.7);
-
-    border: 1px solid rgba(165, 87, 123, 0.08);
+    border: 1px solid rgba(157, 79, 112, 0.08);
 
     box-shadow:
-        0 8px 25px rgba(120, 70, 90, 0.05);
+        0 7px 20px rgba(91, 58, 72, 0.045);
+
+    transition:
+        transform 0.16s ease,
+        box-shadow 0.16s ease;
+}
+
+.instruction-card:hover {
+    transform: translateY(-2px);
+
+    box-shadow:
+        0 12px 25px rgba(91, 58, 72, 0.07);
 }
 
 .instruction-icon {
-    width: 46px;
-    height: 46px;
+    width: 45px;
+    height: 45px;
 
     flex-shrink: 0;
 
     display: flex;
-
     align-items: center;
     justify-content: center;
 
     border-radius: 14px;
 
-    background: #fff0e7;
+    background:
+        linear-gradient(
+            145deg,
+            #fff8ef,
+            #f6dfe8
+        );
 
-    font-size: 23px;
+    font-size: 21px;
+
+    box-shadow:
+        inset 0 1px 0 rgba(255, 255, 255, 0.9);
 }
 
 .instruction-card h3 {
-    font-size: 14px;
+    margin-bottom: 3px;
 
-    color: #714c5c;
+    font-size: 13px;
+    font-weight: 850;
 
-    margin-bottom: 4px;
+    color: #704b5a;
 }
 
 .instruction-card p {
     font-size: 11px;
-
     line-height: 1.45;
 
-    color: #967b86;
+    color: #967d88;
 }
 
 .blessing-card {
     background:
         linear-gradient(
             135deg,
-            rgba(255, 244, 220, 0.85),
-            rgba(255, 235, 243, 0.8)
+            rgba(255, 247, 224, 0.88),
+            rgba(255, 234, 241, 0.84)
         );
+
+    border-color: rgba(199, 150, 66, 0.14);
 }
 
+.blessing-card::after {
+    content: "✦";
 
-/* ================================
+    margin-left: auto;
+
+    align-self: flex-start;
+
+    color: rgba(199, 150, 66, 0.45);
+
+    font-size: 16px;
+}
+
+/* =========================================================
    GAME OVER
-================================ */
+   ========================================================= */
 
 .game-over-icon {
-    font-size: 42px;
+    position: relative;
+    z-index: 2;
 
-    margin-bottom: 15px;
+    margin-bottom: 14px;
 
-    animation: float 3s ease-in-out infinite;
+    font-size: 40px;
+
+    animation: gentleFloat 3.2s ease-in-out infinite;
 }
 
 .final-score-card {
-    width: min(250px, 100%);
+    position: relative;
+    z-index: 2;
 
-    padding: 22px;
+    width: min(255px, 100%);
+
+    padding: 22px 20px;
 
     margin-bottom: 12px;
 
-    border-radius: 24px;
+    border-radius: 22px;
 
-    background: rgba(255, 255, 255, 0.78);
+    background:
+        linear-gradient(
+            145deg,
+            rgba(255, 255, 255, 0.94),
+            rgba(249, 226, 236, 0.91)
+        );
 
-    border: 1px solid rgba(165, 87, 123, 0.1);
+    border: 1px solid rgba(157, 79, 112, 0.09);
 
     box-shadow:
-        0 15px 35px rgba(120, 70, 90, 0.08);
+        0 16px 36px rgba(91, 58, 72, 0.08),
+        inset 0 1px 0 rgba(255, 255, 255, 1);
 
     display: flex;
-
     flex-direction: column;
-
     gap: 5px;
 }
 
 .final-score-card strong {
-    font-size: 44px;
-
+    font-size: 46px;
     line-height: 1;
 
-    color: #a9577b;
+    font-weight: 950;
+    letter-spacing: -2px;
+
+    color: var(--pink-dark);
 }
 
 .final-message {
-    color: #92727f;
+    position: relative;
+    z-index: 2;
 
-    font-size: 13px;
+    max-width: 290px;
 
-    margin-bottom: 17px;
+    margin-bottom: 15px;
+
+    color: #927581;
+
+    font-size: 12px;
+    line-height: 1.5;
 }
 
 #save-score-button {
@@ -609,71 +830,104 @@ h2 {
 }
 
 #leaderboard-button {
-    margin-top: 10px;
+    margin-top: 9px;
 }
 
 #restart-button {
-    margin-top: 7px;
+    margin-top: 6px;
 }
 
-
-/* ================================
+/* =========================================================
    LEADERBOARD
-================================ */
+   ========================================================= */
 
 .leaderboard-content {
+    position: relative;
+    z-index: 2;
+
     width: 100%;
+    max-width: 410px;
 
-    max-width: 420px;
-
-    margin-top: 18px;
+    margin-top: 17px;
 }
 
 .leaderboard-content h2 {
-    margin-bottom: 20px;
+    margin-bottom: 18px;
 }
 
 .leaderboard-list {
     width: 100%;
 
-    max-height: 410px;
+    max-height: 400px;
 
     overflow-y: auto;
 
     padding: 5px;
 
-    border-radius: 22px;
+    border-radius: 20px;
 
-    background: rgba(255, 255, 255, 0.45);
+    background: rgba(255, 255, 255, 0.42);
+
+    box-shadow:
+        inset 0 1px 0 rgba(255, 255, 255, 0.7);
+}
+
+.leaderboard-list::-webkit-scrollbar {
+    width: 4px;
+}
+
+.leaderboard-list::-webkit-scrollbar-thumb {
+    background: rgba(157, 79, 112, 0.20);
+    border-radius: 10px;
 }
 
 .leaderboard-row {
     display: flex;
-
     align-items: center;
 
     gap: 12px;
 
     width: 100%;
-
-    min-height: 54px;
+    min-height: 53px;
 
     padding: 10px 13px;
 
-    margin-bottom: 7px;
+    margin-bottom: 6px;
 
-    border-radius: 16px;
+    border-radius: 15px;
 
-    background: rgba(255, 255, 255, 0.82);
+    background: rgba(255, 255, 255, 0.83);
 
-    border: 1px solid rgba(165, 87, 123, 0.07);
+    border: 1px solid rgba(157, 79, 112, 0.06);
 
     box-shadow:
-        0 5px 15px rgba(120, 70, 90, 0.04);
+        0 5px 14px rgba(91, 58, 72, 0.035);
+
+    transition:
+        transform 0.15s ease,
+        box-shadow 0.15s ease;
 }
 
 .leaderboard-row:last-child {
     margin-bottom: 0;
+}
+
+.leaderboard-row:hover {
+    transform: translateX(2px);
+
+    box-shadow:
+        0 8px 19px rgba(91, 58, 72, 0.07);
+}
+
+.leaderboard-row:first-child {
+    background:
+        linear-gradient(
+            135deg,
+            #fff8df,
+            #fffdf9
+        );
+
+    border-color: rgba(199, 150, 66, 0.18);
 }
 
 .rank {
@@ -681,135 +935,208 @@ h2 {
 
     flex-shrink: 0;
 
-    color: #a9577b;
-
-    font-size: 13px;
-
-    font-weight: 900;
-
     text-align: center;
+
+    color: var(--pink-dark);
+
+    font-size: 12px;
+    font-weight: 950;
+}
+
+.leaderboard-row:first-child .rank {
+    color: var(--gold);
 }
 
 .leaderboard-name {
     flex: 1;
-
     min-width: 0;
 
     overflow: hidden;
 
     text-overflow: ellipsis;
-
     white-space: nowrap;
 
-    color: #70495b;
+    color: #704b5a;
 
-    font-size: 13px;
-
+    font-size: 12px;
     font-weight: 800;
 
     text-align: left;
 }
 
 .leaderboard-score {
-    color: #a9577b;
+    color: var(--pink-dark);
 
-    font-size: 14px;
+    font-size: 13px;
+    font-weight: 950;
+}
 
-    font-weight: 900;
+.leaderboard-row:first-child .leaderboard-score {
+    color: #ad7a27;
 }
 
 .leaderboard-empty {
     padding: 25px 15px;
 
-    color: #9a7d89;
+    color: #9b7f8b;
 
     font-size: 12px;
-
     line-height: 1.5;
 }
 
 .leaderboard-note {
-    margin-top: 10px;
+    margin-top: 9px;
 
-    color: #aa8c99;
+    color: #ad919c;
 
-    font-size: 10px;
+    font-size: 9px;
+    line-height: 1.4;
 }
 
-
-/* ================================
+/* =========================================================
    ANIMATIONS
-================================ */
+   ========================================================= */
 
-@keyframes screenIn {
-
+@keyframes screenEnter {
     from {
         opacity: 0;
-        transform: scale(0.98);
+        transform: translateY(8px);
     }
 
     to {
         opacity: 1;
-        transform: scale(1);
+        transform: translateY(0);
     }
 }
 
-@keyframes float {
-
+@keyframes gentleFloat {
     0%,
     100% {
         transform: translateY(0);
     }
 
     50% {
-        transform: translateY(-8px);
+        transform: translateY(-7px);
     }
 }
 
+@keyframes sparkle {
+    0%,
+    100% {
+        opacity: 0.35;
+        transform: translateY(0) rotate(0deg);
+    }
 
-/* ================================
-   SMALL PHONES
-================================ */
+    50% {
+        opacity: 0.85;
+        transform: translateY(-7px) rotate(15deg);
+    }
+}
 
-@media (max-height: 700px) {
+/* =========================================================
+   MOBILE
+   ========================================================= */
 
-    .screen {
-        padding: 20px;
+@media (max-width: 480px) {
+    #game-container {
+        max-width: 100%;
+    }
+
+    .game-header {
+        height: 68px;
+        padding: 10px 14px;
+    }
+
+    #score {
+        font-size: 22px;
+    }
+
+    .game-title {
+        font-size: 10px;
+        letter-spacing: 2.4px;
     }
 
     .start-decoration {
-        font-size: 32px;
+        width: 68px;
+        height: 68px;
 
-        margin-bottom: 10px;
+        margin-bottom: 15px;
+
+        border-radius: 21px;
+
+        font-size: 36px;
     }
 
-    h1 {
-        font-size: 48px;
-
-        margin-bottom: 14px;
+    #start-screen h1 {
+        font-size: 55px;
+        letter-spacing: -2.5px;
     }
 
     .tagline {
-        margin-bottom: 22px;
+        max-width: 290px;
+
+        font-size: 13px;
+
+        margin-bottom: 26px;
     }
 
-    .instruction-card {
-        padding: 11px;
+    .primary-button {
+        width: min(300px, 100%);
     }
 
-    .instruction-icon {
-        width: 40px;
-        height: 40px;
+    .secondary-button {
+        width: min(300px, 100%);
     }
 
-    h2 {
-        margin-bottom: 17px;
+    .screen {
+        padding: 25px 20px;
+    }
+}
+
+/* =========================================================
+   SHORT DEVICES
+   ========================================================= */
+
+@media (max-height: 700px) {
+    .screen {
+        padding: 18px 20px;
+    }
+
+    .start-decoration {
+        width: 58px;
+        height: 58px;
+
+        margin-bottom: 8px;
 
         font-size: 31px;
     }
 
+    #start-screen h1 {
+        font-size: 48px;
+
+        margin-bottom: 11px;
+    }
+
+    .tagline {
+        margin-bottom: 18px;
+    }
+
+    .instruction-card {
+        padding: 10px;
+    }
+
+    .instruction-icon {
+        width: 39px;
+        height: 39px;
+    }
+
+    h2 {
+        font-size: 30px;
+        margin-bottom: 15px;
+    }
+
     .leaderboard-list {
-        max-height: 330px;
+        max-height: 320px;
     }
 
     .final-score-card {
@@ -818,5 +1145,19 @@ h2 {
 
     .final-score-card strong {
         font-size: 38px;
+    }
+}
+
+/* =========================================================
+   ACCESSIBILITY
+   ========================================================= */
+
+@media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
     }
 }

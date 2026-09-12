@@ -18,7 +18,10 @@
 
     <main id="game-container">
 
-        <!-- GAME HEADER -->
+        <!-- ========================================
+             GAME HEADER
+        ========================================= -->
+
         <header class="game-header">
 
             <div class="stat">
@@ -38,47 +41,79 @@
         </header>
 
 
-        <!-- GAME CANVAS -->
+        <!-- ========================================
+             GAME CANVAS
+        ========================================= -->
+
         <canvas id="gameCanvas"></canvas>
 
 
-        <!-- START SCREEN -->
+        <!-- ========================================
+             START SCREEN
+        ========================================= -->
+
         <section id="start-screen" class="screen">
 
             <div class="start-decoration">🪔</div>
 
-            <p class="eyebrow">A FESTIVE ARCADE GAME</p>
+            <p class="eyebrow">
+                A FESTIVE ARCADE GAME
+            </p>
 
-            <h1>MODAK<br>CATCH</h1>
+            <h1>
+                MODAK<br>
+                CATCH
+            </h1>
 
             <p class="tagline">
                 Catch the blessings.<br>
                 Beat the high score.
             </p>
 
-            <button id="play-button" class="primary-button">
+            <button
+                id="play-button"
+                class="primary-button"
+            >
                 PLAY NOW
             </button>
 
-            <button id="how-to-button" class="secondary-button">
+            <button
+                id="how-to-button"
+                class="secondary-button"
+            >
                 HOW TO PLAY
             </button>
 
-            <button id="change-name-button" class="text-button">
+            <button
+                id="change-name-button"
+                class="text-button"
+            >
                 CHANGE NAME
             </button>
 
         </section>
 
 
-        <!-- NAME SCREEN -->
-        <section id="name-screen" class="screen hidden">
+        <!-- ========================================
+             NAME SCREEN
+        ========================================= -->
 
-            <div class="start-decoration">🪔</div>
+        <section
+            id="name-screen"
+            class="screen hidden"
+        >
 
-            <p class="eyebrow">WELCOME TO MODAK CATCH</p>
+            <div class="start-decoration">
+                🪔
+            </div>
 
-            <h2>WHAT'S YOUR NAME?</h2>
+            <p class="eyebrow">
+                WELCOME TO MODAK CATCH
+            </p>
+
+            <h2>
+                WHAT'S YOUR NAME?
+            </h2>
 
             <p class="name-description">
                 Your name will appear on the leaderboard.
@@ -93,97 +128,155 @@
                 autocomplete="off"
             >
 
-            <button id="save-name-button" class="primary-button">
+            <button
+                id="save-name-button"
+                class="primary-button"
+            >
                 CONTINUE
             </button>
 
-            <button id="name-back-button" class="secondary-button">
+            <button
+                id="name-back-button"
+                class="secondary-button"
+            >
                 BACK
             </button>
 
-            <p id="name-status" class="status-message"></p>
+            <p
+                id="name-status"
+                class="status-message"
+            ></p>
 
         </section>
 
 
-        <!-- HOW TO PLAY SCREEN -->
-        <section id="how-to-screen" class="screen hidden">
+        <!-- ========================================
+             HOW TO PLAY SCREEN
+        ========================================= -->
 
-            <button id="back-button" class="back-button">
+        <section
+            id="how-to-screen"
+            class="screen hidden"
+        >
+
+            <button
+                id="back-button"
+                class="back-button"
+            >
                 ← Back
             </button>
 
             <div class="how-content">
 
-                <p class="eyebrow">QUICK GUIDE</p>
+                <p class="eyebrow">
+                    QUICK GUIDE
+                </p>
 
-                <h2>HOW TO PLAY</h2>
+                <h2>
+                    HOW TO PLAY
+                </h2>
+
+
+                <!-- MOVE BOWL -->
 
                 <div class="instruction-card">
 
-                    <div class="instruction-icon">🥣</div>
+                    <div class="instruction-icon">
+                        🥣
+                    </div>
 
                     <div>
-                        <h3>Move Your Bowl</h3>
+
+                        <h3>
+                            Move Your Bowl
+                        </h3>
 
                         <p>
-                            Tap the left or right side
-                            of the screen to move.
+                            Tap a lane to move your bowl.
+                            Drag left or right to slide it.
                         </p>
+
                     </div>
 
                 </div>
 
 
+                <!-- CATCH MODAKS -->
+
                 <div class="instruction-card">
 
-                    <div class="instruction-icon">🍬</div>
+                    <div class="instruction-icon">
+                        🍬
+                    </div>
 
                     <div>
-                        <h3>Catch Modaks</h3>
+
+                        <h3>
+                            Catch Modaks
+                        </h3>
 
                         <p>
                             Catch falling modaks to
                             increase your score.
                         </p>
+
                     </div>
 
                 </div>
 
 
+                <!-- LIVES -->
+
                 <div class="instruction-card">
 
-                    <div class="instruction-icon">❤️</div>
+                    <div class="instruction-icon">
+                        ❤️
+                    </div>
 
                     <div>
-                        <h3>Don't Miss</h3>
+
+                        <h3>
+                            Don't Miss
+                        </h3>
 
                         <p>
                             You have three lives.
                             Every missed modak costs one.
                         </p>
+
                     </div>
 
                 </div>
 
+
+                <!-- GOLDEN MODAK -->
 
                 <div class="instruction-card blessing-card">
 
-                    <div class="instruction-icon">✨</div>
+                    <div class="instruction-icon">
+                        ✨
+                    </div>
 
                     <div>
-                        <h3>Ganesh's Blessing</h3>
+
+                        <h3>
+                            Golden Modak
+                        </h3>
 
                         <p>
-                            Watch for the special blessing
-                            and catch it for a bonus.
+                            Catch the special golden
+                            modak for a bonus score.
                         </p>
+
                     </div>
 
                 </div>
 
 
-                <button id="start-from-how-button" class="primary-button">
+                <button
+                    id="start-from-how-button"
+                    class="primary-button"
+                >
                     LET'S PLAY
                 </button>
 
@@ -192,18 +285,32 @@
         </section>
 
 
-        <!-- GAME OVER SCREEN -->
-        <section id="game-over-screen" class="screen hidden">
+        <!-- ========================================
+             GAME OVER SCREEN
+        ========================================= -->
 
-            <div class="game-over-icon">🪔</div>
+        <section
+            id="game-over-screen"
+            class="screen hidden"
+        >
 
-            <p class="eyebrow">THE FESTIVAL CONTINUES</p>
+            <div class="game-over-icon">
+                🪔
+            </div>
 
-            <h2>GAME OVER</h2>
+            <p class="eyebrow">
+                THE FESTIVAL CONTINUES
+            </p>
+
+            <h2>
+                GAME OVER
+            </h2>
 
             <div class="final-score-card">
 
-                <span class="label">YOUR SCORE</span>
+                <span class="label">
+                    YOUR SCORE
+                </span>
 
                 <strong id="final-score">
                     0
@@ -211,45 +318,79 @@
 
             </div>
 
-            <p id="current-player" class="current-player">
+            <p
+                id="current-player"
+                class="current-player"
+            >
                 Playing as Player
             </p>
 
-            <p id="final-message" class="final-message">
+            <p
+                id="final-message"
+                class="final-message"
+            >
                 Nice catch!
             </p>
 
-            <button id="save-score-button" class="primary-button">
+            <button
+                id="save-score-button"
+                class="primary-button"
+            >
                 SAVE SCORE
             </button>
 
-            <button id="leaderboard-button" class="secondary-button">
+            <button
+                id="leaderboard-button"
+                class="secondary-button"
+            >
                 LEADERBOARD
             </button>
 
-            <button id="restart-button" class="text-button">
+            <button
+                id="restart-button"
+                class="text-button"
+            >
                 PLAY AGAIN
             </button>
 
-            <p id="save-status" class="status-message"></p>
+            <p
+                id="save-status"
+                class="status-message"
+            ></p>
 
         </section>
 
 
-        <!-- LEADERBOARD SCREEN -->
-        <section id="leaderboard-screen" class="screen hidden">
+        <!-- ========================================
+             LEADERBOARD SCREEN
+        ========================================= -->
 
-            <button id="leaderboard-back-button" class="back-button">
+        <section
+            id="leaderboard-screen"
+            class="screen hidden"
+        >
+
+            <button
+                id="leaderboard-back-button"
+                class="back-button"
+            >
                 ← Back
             </button>
 
             <div class="leaderboard-content">
 
-                <p class="eyebrow">THE BEST CATCHERS</p>
+                <p class="eyebrow">
+                    THE BEST CATCHERS
+                </p>
 
-                <h2>LEADERBOARD</h2>
+                <h2>
+                    LEADERBOARD
+                </h2>
 
-                <div id="leaderboard-list" class="leaderboard-list">
+                <div
+                    id="leaderboard-list"
+                    class="leaderboard-list"
+                >
 
                     <p class="leaderboard-empty">
                         Loading scores...
@@ -271,7 +412,14 @@
     </main>
 
 
-    <script type="module" src="game.js"></script>
+    <!-- ========================================
+         GAME JAVASCRIPT
+    ========================================= -->
+
+    <script
+        type="module"
+        src="game.js"
+    ></script>
 
 </body>
 
