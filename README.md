@@ -73,7 +73,7 @@ The game focuses on simple, accessible gameplay that can be enjoyed on both mobi
 
 🏅 Contest
 
-Created for the **Ganesh Chaturthi Game Design Contest**.
+Created for the **Ganesh Chaturthi Game Design Contest** NIAT.
 
 The project focuses on:
 
